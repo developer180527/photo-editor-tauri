@@ -1,0 +1,30 @@
+[package]
+name = "photo-editor"
+version = "0.1.0"
+description = "Pix – Cross-platform photo editor"
+authors = ["you"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "photo_editor_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri       = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-fs     = "2"
+serde       = { version = "1", features = ["derive"] }
+serde_json  = "1"
+base64      = "0.22"
+image       = { version = "0.25", features = ["png", "jpeg", "gif", "webp", "bmp", "tiff"] }
+
+[profile.release]
+panic   = "abort"   # strip panic handler for smaller binary
+codegen-units = 1   # better optimisations
+lto     = true
+opt-level = "s"     # optimise for size
