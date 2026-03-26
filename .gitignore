@@ -38,3 +38,7 @@ npm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Large icon source files — only generated icons should be committed
+src-tauri/icons/icon_img.png
+src-tauri/icons/icon_1024.png
